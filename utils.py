@@ -17,3 +17,14 @@ def create_dir(path_str: str):
     # parents=True creates intermediate directories; exist_ok=True ignores errors if it already exists
     path.mkdir(parents=True, exist_ok=True)
 
+
+import re
+def remove_tag(text):
+    clean_text=re.sub(r'<[^>]+>', '', text)
+    return clean_text.lower()
+
+def label_conv(label):
+    if label=='positive':
+        return 1
+    else:
+        return 0

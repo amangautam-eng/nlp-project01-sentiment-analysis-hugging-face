@@ -3,3 +3,10 @@ root_dir : artifacts
 data_ingestion:
   root: artifacts/data_ingestion
   raw_data: artifacts/data_ingestion/raw
+
+data_transformation:
+  root: artifacts/data_transformation
+  raw: artifacts/data_ingestion/raw/Review.csv
+  train: artifacts/data_transformation/train
+  test: artifacts/data_transformation/test
+  
