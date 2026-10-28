@@ -1,0 +1,5 @@
+root_dir : artifacts
+
+data_ingestion:
+  root: artifacts/data_ingestion
+  raw_data: artifacts/data_ingestion/raw
