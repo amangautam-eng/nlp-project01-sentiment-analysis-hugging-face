@@ -2,23 +2,17 @@ from src.project_01_sentimental_analysis.config.configuration import Configurati
 from transformers import pipeline
 
 class ModelPrediction:
-    def __init__(self,config:ModelTrainerconfig):
-        self.config=config
+    def __init__(self):
+        self.config=ConfigurationManager().get_model_trainer_config()
 
-    def load_model(self):
+
+    def predict(self,text):
         classifier = pipeline(
             "text-classification", 
             model=self.config.model_path, 
             tokenizer=self.config.tokenizer_path
         )
-
-        return classifier
-    
-
-
-    def predict(self,text):
-        model=self.load_model()
-        result=model([text])
+        result=classifier([text])
 
         return result
 
@@ -27,10 +21,8 @@ class ModelPredictionPipeline:
         pass
 
     def initiate_prediction_pipeline(self):
-        config=ConfigurationManager()
-        trainer_config=config.get_model_trainer_config()
 
-        prediction=ModelPrediction(config=trainer_config)
+        prediction=ModelPrediction()
 
         return prediction
         
