@@ -16,6 +16,12 @@ class DataTransformationConfig:
     train_dir:Path
     test_dir:Path
 
+@dataclass
+class ModelTrainerconfig:
+    root_dir:Path
+    model_path:Path
+    tokenizer_path:Path
+
 class ConfigurationManager:
     def __init__(self,
                  config_path=CONFIG_FILE_PATH,
@@ -53,5 +59,18 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+
+    def get_model_trainer_config(self)->ModelTrainerconfig:
+        config=self.config.model_trainer
+
+        create_dir(config.root)
+
+        model_trainer_config=ModelTrainerconfig(
+            root_dir=config.root,
+            model_path=config.model,
+            tokenizer_path=config.tokenizer
+        )
+
+        return model_trainer_config
     
         

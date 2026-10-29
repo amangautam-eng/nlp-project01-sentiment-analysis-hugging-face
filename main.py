@@ -1,5 +1,6 @@
 from src.project_01_sentimental_analysis.components.data_ingestion import DataIngestionPipeline
 from src.project_01_sentimental_analysis.components.data_transformation import DataTransformationPipeline
+from src.project_01_sentimental_analysis.components.model_prediction import ModelPredictionPipeline
 
 STAGE_NAME="Data Ingestion"
 
@@ -29,3 +30,16 @@ try:
 except Exception as e:
     raise e
 
+STAGE_NAME="Data Prediction"
+
+try:
+    print(f"stage {STAGE_NAME} initiated")
+
+    predictor=ModelPredictionPipeline()
+    predictor.initiate_prediction_pipeline()
+        
+
+    print(f"Stage {STAGE_NAME} completed")
+
+except Exception as e:
+    raise e
